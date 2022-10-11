@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ListBoxIssue.ViewModels"
+             xmlns:converters="using:Issue.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ListBoxIssue.Views.MainView"
+             Foreground="White"
+             Background="#171C2C"
+             x:DataType="viewModels:MainViewModel"
+             x:CompileBindings="True">
+  <Design.DataContext>
+    <viewModels:MainViewModel />
+  </Design.DataContext>
+
+  <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+    <TextBlock Text="{Binding Greeting}" />
+
+    <ListBox Items="{Binding SomeDictionary.Values}" Width="395" Height="279">
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <StackPanel Orientation="Horizontal" Width="395" Height="80" Margin="0 0 0 13" DataContext="{Binding}">
+            <TextBlock Text="{Binding SomeNumber}" />
+          </StackPanel>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+  </StackPanel>
+</UserControl>
