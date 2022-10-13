@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:ListBoxIssue.ViewModels"
              xmlns:converters="using:Issue.Converters"
+			 xmlns:sys="using:System.Collections"
+			 xmlns:obj="using:ListBoxIssue.Objects"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ListBoxIssue.Views.MainView"
              Foreground="White"
@@ -17,9 +19,9 @@
   <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
     <TextBlock Text="{Binding Greeting}" />
 
-    <ListBox Items="{Binding SomeDictionary.Values}" Width="395" Height="279">
+    <ListBox Items="{Binding ((sys:IDictionary)SomeDictionary).Values}" Width="395" Height="279">
       <ListBox.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate DataType="obj:SomeClass">
           <StackPanel Orientation="Horizontal" Width="395" Height="80" Margin="0 0 0 13" DataContext="{Binding}">
             <TextBlock Text="{Binding SomeNumber}" />
           </StackPanel>
